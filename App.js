@@ -4,7 +4,7 @@ import Getstarted from "./src/screens/Welcomescreens/Getstarted";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Signup from "./src/screens/Signup/Signup";
-import Signupwithphone from "./src/screens/Signup/Signupwithphone";
+import Signupwithphone from "./src/screens/Signup/Signupwithphone";   
 import Otp from "./src/screens/Signup/Otp";
 import Splash from "./src/Splash";
 import Optionscreen from "./src/screens/Optionscreen";
