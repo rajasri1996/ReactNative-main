@@ -14,6 +14,7 @@ import Result from "./src/screens/Riskcalculator/Result";
 import Account from "./src/screens/Account/Index";
 import Assetpreview from "./src/screens/Assetpreview/Index";
 import Navigatescreens from "./src/screens/Navigatescreens/Index";
+import Uploadscreens from "./src/screens/Uploadscreens/Index";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +22,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Navigatescreens"
+        initialRouteName="Uploadscreens"
         screenOptions={{
           headerShown: false,
         }}
@@ -38,6 +39,7 @@ export default function App() {
         <Stack.Screen name="Account" component={Account} />
         <Stack.Screen name="Assetpreview" component={Assetpreview} />
         <Stack.Screen name="Navigatescreens" component={Navigatescreens} />
+        <Stack.Screen name="Uploadscreens" component={Uploadscreens} />
       </Stack.Navigator>
       <StatusBar />
     </NavigationContainer>
