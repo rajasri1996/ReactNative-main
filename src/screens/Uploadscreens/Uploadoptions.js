@@ -4,14 +4,14 @@ import {
   View,
   Image,
   SafeAreaView,
-  Button,
   StatusBar,
-  TouchableOpacity,
   Linking,
+  TouchableOpacity,
 } from "react-native";
 import React, { useState, useCallback } from "react";
-
+import { Button } from "react-native-paper";
 import { height, width } from "../../Dimension";
+import DocumentPicker from "@react-native-picker/picker";
 
 export default Uploadoptions = () => {
   const [fileResponse, setFileResponse] = useState([]);
@@ -43,7 +43,7 @@ export default Uploadoptions = () => {
       <View style={styles.buttonContainer2}>
         <Image
           source={require("../../../assets/uploadIcon/Shape2.png")}
-          style={styles.optionImage}
+          style={styles.optionImage2}
         />
         <Text style={styles.optionText}>
           Forward the email containing {"\n"}CAS to{" "}
@@ -55,7 +55,10 @@ export default Uploadoptions = () => {
           </Text>
         </Text>
       </View>
-      <Text style={styles.orText}>OR</Text>
+      <View>
+        <Text style={styles.orText}>OR</Text>
+      </View>
+
       <View style={styles.buttonContainer2}>
         <Image
           source={require("../../../assets/uploadIcon/Shape3.png")}
@@ -79,24 +82,51 @@ export default Uploadoptions = () => {
             {file?.uri}
           </Text>
         ))}
+
         <Button
-          color="#56C8C9"
-          title="📑 Upload"
+          mode="contained"
+          style={[
+            styles.uploadButton,
+            {
+              backgroundColor: "#219EBC",
+              borderColor: "#219EBC",
+            },
+          ]}
+          icon={require("../../../assets/uploadIcon/Shape4.png")}
           onPress={handleDocumentSelection}
-        />
+        >
+          <Text
+            style={{
+              fontFamily: "Metropolis",
+              fontWeight: "500",
+              fontSize: width * 0.034,
+            }}
+          >
+            Upload
+          </Text>
+        </Button>
       </SafeAreaView>
 
-      <TouchableOpacity style={styles.button}>
-        <Button color="#000000" style={{ paddingTop: 30 }} title="Done" />
-      </TouchableOpacity>
+      <View style={styles.footerButton}>
+        <View style={styles.flexContainer}>
+          <TouchableOpacity
+            style={[
+              styles.footerButtons,
+              { backgroundColor: "#023047", marginTop: height * -0.02 },
+            ]}
+          >
+            <Text style={styles.submitText}>Done</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   optionsContainer: {
-    marginTop: height * 0.03,
-    paddingLeft: width * 0.11,
+    marginTop: height * 0.0468,
+    paddingLeft: width * 0.107,
   },
   buttonContainer: {
     flexDirection: "row",
@@ -119,11 +149,22 @@ const styles = StyleSheet.create({
     width: width * 0.086,
     height: height * 0.037,
     marginLeft: width * -0.23,
+    opacity: 0.6,
+  },
+
+  optionImage2: {
+    width: width * 0.086,
+    height: height * 0.037,
+    marginLeft: width * -0.23,
+    opacity: 0.6,
+    paddingTop: height * 0.0405,
   },
   optionImage3: {
     width: width * 0.086,
     height: height * 0.037,
     marginLeft: width * -0.19,
+    opacity: 0.6,
+    paddingTop: height * 0.04,
   },
   optionText: {
     color: "#023047",
@@ -135,37 +176,53 @@ const styles = StyleSheet.create({
   },
   orText: {
     color: "#023047",
-    textAlign: "center",
-    marginTop: height * 0.02,
-    fontFamily: "Metropolis",
-    fontSize: width * 0.032,
+    fontSize: width * 0.033,
     fontWeight: "600",
+    textAlign: "center",
+    fontFamily: "Metropolis",
+    marginTop: height * 0.02,
+    opacity: 0.5,
   },
-  container: {
-    marginTop: height * 0.01,
-    padding: height * 0.041,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingLeft: width * -0.35,
-  },
-  submitContainer: {
-    paddingRight: width * 0.2,
-    marginTop: height * 0.06,
+  uploadButton: {
+    marginTop: height * 0.041,
+    borderRadius: width * 0.03,
+    borderWidth: width * 0.002,
+    borderColor: "rgb(191, 191, 191)",
+    height: height * 0.05,
+    width: width * 0.26,
+    marginLeft: width * 0.29,
   },
 
-  button: {
-    paddingTop: height * 0.03,
-    paddingBottom: height * 0.011,
-    paddingLeft: width * 0.045,
-    paddingRight: width * 0.045,
-    backgroundColor: "#FFFFFF",
-    shadowColor: "rgba(0, 0, 0, 0.1)",
-    // shadowOpacity: 0.6,
-    // elevation: 6,
-    fontSize: width * 0.045,
-    // shadowRadius: 15,
-    marginLeft: width * -0.1,
-    height: height * 0.106,
-    marginTop: height * 0.01,
+  footerButton: {
+    padding: width * 0.04,
+    // marginTop: height * 0.03,
+    backgroundColor: "white",
+    borderWidth: width * 0.002,
+    borderColor: "rgb(230, 230, 230)",
+    elevation: width * 0.02,
+    marginLeft: width * -0.11,
+    marginTop: height * 0.045,
+    height: height * 1,
+  },
+
+  flexContainer: {
+    flexDirection: "row",
+    marginTop: height * 0.03,
+  },
+
+  footerButtons: {
+    flex: 1,
+    // marginTop: height* 0.106,
+    alignItems: "center",
+    borderRadius: width * 0.03,
+    borderWidth: 1,
+    borderColor: "#023047",
+    padding: width * 0.02,
+  },
+
+  submitText: {
+    padding: width * 0.01,
+    color: "#fff",
+    fontSize: width * 0.047,
   },
 });

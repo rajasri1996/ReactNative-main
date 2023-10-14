@@ -18,25 +18,35 @@ export default Uploadscreens = () => {
       <View style={styles.arrowContainer}>
         <TouchableOpacity style={styles.arrow}>
           <Ionicons
+            style={styles.iconArrow}
             name="arrow-back"
             size={30}
             color="white"
             onPress={() => navigation.goBack()}
           />
-          <Text style={styles.arrowText}>Upload Existing Mutual Fund</Text>
+          <Text style={styles.headerText}>
+            Upload Existing Mutual Fund Invest...
+          </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.inputContainer}>
-        <Text style={styles.headers}>
+        <Text style={styles.headerParagraph}>
           Enter Email Id used to purchase Mutual Funds to upload your holdings
         </Text>
 
         <TextInput
-          style={styles.inputEmail}
           mode="outlined"
           label="Email"
-          placeholder="Enter your Email id "
-          right={<TextInput.Icon icon="check-circle" />}
+          placeholder="Entert your Email id"
+          style={{
+            backgroundColor: "transparent",
+            marginTop: height * 0.032,
+            fontSize: width * 0.032,
+            fontWeight: "500",
+            fontFamily: "Metropolis",
+            lineHeight: height * 0.016,
+            marginLeft: width * 0.047,
+          }}
         />
       </View>
       <View>
@@ -54,7 +64,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: "100%",
-    height: height * 0.45,
+    height: height * 0.43,
     overflow: "hidden",
     borderBottomLeftRadius: width * 0.08,
     borderBottomRightRadius: width * 0.08,
@@ -68,35 +78,34 @@ const styles = StyleSheet.create({
     marginTop: 70,
     paddingLeft: width * 0.04,
     position: "absolute",
-    top: 0,
-    left: 0,
   },
   arrow: {
     flexDirection: "row",
     alignItems: "center",
   },
-  arrowText: {
-    color: "#fff",
-    lineHeight: height * 0.028,
-    fontSize: width * 0.037,
-    fontFamily: "Metropolis",
+  iconArrow: {
+    marginLeft: width * 0.047,
+  },
+  headerText: {
+    color: "#FFFFFF",
     fontWeight: "600",
-    marginLeft: width * 0.03,
+    fontFamily: "Metropolis",
+    fontSize: width * 0.037,
+    lineHeight: height * 0.028,
+    marginLeft: width * 0.047,
   },
   inputContainer: {
     marginTop: height * 0.2,
     paddingLeft: width * 0.04,
     position: "absolute",
-    top: 0,
-    left: 0,
   },
-  headers: {
-    color: "#fff",
+  headerParagraph: {
+    color: "#FFFFFF",
     lineHeight: height * 0.028,
     fontSize: width * 0.037,
     fontFamily: "Metropolis",
     fontWeight: "500",
-    width: width * 0.85,
+    marginLeft: width * 0.047,
   },
   inputEmail: {
     marginTop: height * 0.05,
