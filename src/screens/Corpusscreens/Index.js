@@ -1,20 +1,23 @@
 import React, { useState } from "react";
-import { LineChart } from "react-native-gifted-charts";
 import {
   View,
   Text,
-  ScrollView,
   StyleSheet,
+  Image,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { height, width } from "../../Dimension";
-import { Picker } from "@react-native-picker/picker";
+import { Ionicons } from "@expo/vector-icons";
 import { Slider } from "@miblanchard/react-native-slider";
+import { Button } from "react-native-paper";
+import Footercorpus from "./Footercorpus";
 
-const App = () => {
-  const [trendDuration, setTrendDuration] = useState();
+export default Uploadscreens = () => {
   const [MonthlyInvestment, setMonthlyInvestment] = useState(1000);
   const [timePeriod, setTimePeriod] = useState(1);
+  const [percentage, setPercentage] = useState(0);
+
   const ptData = [
     { value: 160, date: "1 Apr 2022" },
     { value: 180, date: "2 Apr 2022" },
@@ -73,142 +76,66 @@ const App = () => {
     { value: 250, date: "4 May 2022" },
     { value: 210, date: "5 May 2022" },
   ];
+
   return (
-    <View style={styles.portfolioContainer}>
+    <View style={styles.container}>
+      <View style={styles.arrowContainer}>
+        <TouchableOpacity style={styles.arrow}>
+          <Ionicons
+            style={styles.iconArrow}
+            name="arrow-back"
+            size={30}
+            color="white"
+            onPress={() => navigation.goBack()}
+          />
+          <Text style={styles.headerText}>
+            How to create an Emergency Corpus..
+          </Text>
+        </TouchableOpacity>
+      </View>
+
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Text style={styles.Trend}>Trend</Text>
         <View style={styles.chartContainer}>
-          <TouchableOpacity style={styles.dropdown}>
-            <Picker
-              selectedValue={trendDuration}
-              onValueChange={(itemValue, itemIndex) =>
-                setTrendDuration(itemValue)
-              }
-              mode="dropdown"
-              style={styles.Picker}
-            >
-              <Picker.Item
-                label="Last Week"
-                value="Last Week"
-                style={styles.pickerLabelStyle}
-              />
-              <Picker.Item
-                label="Last Month"
-                value="Last Month"
-                style={styles.pickerLabelStyle}
-              />
-            </Picker>
-          </TouchableOpacity>
-
-          <Text style={styles.gain}>+22.56 (7%)</Text>
-          <View style={styles.chart}>
-            <LineChart
-              areaChart
-              data={ptData}
-              width={width}
-              hideDataPoints
-              spacing={width * 0.05}
-              color="rgba(61, 193, 84, 1)"
-              thickness={width * 0.015}
-              startFillColor="rgba(193, 241, 142, 1)"
-              endFillColor="rgba(254, 253, 255, 1)"
-              initialSpacing={0}
-              yAxisThickness={0}
-              xAxisColor="white"
-              hideYAxisText={true}
-              pointerConfig={{
-                pointerStripHeight: height * 0.2,
-                pointerStripColor: "rgba(61, 193, 84, 1)",
-                pointerStripWidth: width * 0.015,
-                pointerColor: "rgba(61, 193, 84, 1)",
-                radius: width * 0.02,
-                pointerLabelWidth: width * 0.25,
-                activatePointersOnLongPress: true,
-                autoAdjustPointerLabelPosition: false,
-                pointerLabelComponent: (items) => {
-                  return (
-                    <View
-                      style={{
-                        height: width * 0.25,
-                        width: width * 0.25,
-                        justifyContent: "center",
-                        marginTop: -30,
-                        marginLeft: -40,
-                      }}
-                    >
-                      <Text
-                        style={{
-                          color: "rgba(122, 122, 122, 1)",
-                          fontSize: 14,
-                          marginBottom: 6,
-                          textAlign: "center",
-                        }}
-                      >
-                        {items[0].date}
-                      </Text>
-
-                      <View
-                        style={{
-                          paddingHorizontal: 14,
-                          paddingVertical: 6,
-                          borderRadius: 16,
-                          backgroundColor: "rgba(55, 126, 54, 1)",
-                          color: "rgba(122, 122, 122, 1)",
-                        }}
-                      >
-                        <Text
-                          style={{
-                            fontWeight: "bold",
-                            textAlign: "center",
-                            color: "rgba(193, 241, 142, 1)",
-                          }}
-                        >
-                          {"+" + items[0].value + ".0"}
-                        </Text>
-                      </View>
-                    </View>
-                  );
-                },
-              }}
-            />
-          </View>
-        </View>
-        <Text style={styles.Trend}>Risk Calculator</Text>
-        <View
-          style={[
-            styles.chartContainer,
-            { padding: width * 0.08, marginBottom: height * 0.01 },
-          ]}
-        >
           <View style={{ alignItems: "center" }}>
-            <Text style={styles.riskCalculatorHeader}>
-              Returns on Axis Multicap Growth Fund
-            </Text>
-            <Text style={styles.amount}>₹10,600.00</Text>
-            <View style={styles.flexContainer}>
-              <Text style={styles.absolute}>Absolute Returns :</Text>
-              <Text style={styles.percentage}> +32.3 (9%)</Text>
-            </View>
             <View style={styles.flexContainer}>
               <TouchableOpacity
                 style={[styles.frequencyButtons, { backgroundColor: "white" }]}
               >
-                <Text style={styles.frequencyButtonsText}>One - Time</Text>
+                <Text style={styles.frequencyButtonsText}>Monthly</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[
-                  styles.frequencyButtons,
+                  styles.frequencyButtons1,
                   { backgroundColor: "rgba(249, 174, 44, 1)" },
                 ]}
               >
-                <Text style={styles.frequencyButtonsText}>Monthly</Text>
+                <Image
+                  source={require("../../../assets/corpusIcon/Shape.png")}
+                  style={{
+                    width: width * 0.053,
+                    height: height * 0.0182,
+                    marginLeft: width * -0.261,
+                    marginTop: height * 0.016,
+                  }}
+                />
+                <Text
+                  style={[
+                    styles.frequencyButtonsText1,
+                    {
+                      marginTop: height * -0.024,
+                      marginBottom: height * 0.004,
+                    },
+                  ]}
+                >
+                  One - Time
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
           <View>
             <View style={[styles.flexContainer, { marginTop: height * 0.04 }]}>
               <Text style={[styles.rangeText, { textAlign: "left" }]}>
-                Monthly Investment
+                One-Time Investment
               </Text>
               <Text style={styles.rangeTextPercentage}>
                 ₹ {MonthlyInvestment}
@@ -217,7 +144,7 @@ const App = () => {
             <Slider
               animateTransitions
               maximumTrackTintColor={"rgba(26, 28, 23, 0.12)"}
-              minimumTrackTintColor={"rgba(2, 48, 71, 1)"}
+              minimumTrackTintColor={"#023047"}
               maximumValue={100000}
               minimumValue={1000}
               onValueChange={(value) => setMonthlyInvestment(Math.floor(value))}
@@ -229,6 +156,32 @@ const App = () => {
               }}
             />
           </View>
+
+          <View style={{ marginBottom: height * 0.02 }}>
+            <View style={styles.flexContainer}>
+              <Text style={[styles.rangeText, { textAlign: "left" }]}>
+                Annual Return
+              </Text>
+              <Text style={styles.rangeTextPercentage}>{timePeriod} %</Text>
+            </View>
+            <Slider
+              animateTransitions
+              maximumTrackTintColor={"rgba(26, 28, 23, 0.12)"}
+              minimumTrackTintColor={"#023047"}
+              maximumValue={100}
+              minimumValue={0}
+              onValueChange={(yearValue) =>
+                setTimePeriod(Math.floor(yearValue))
+              }
+              value={percentage}
+              thumbTintColor={"rgba(33, 158, 188, 1)"}
+              trackStyle={{
+                height: height * 0.008,
+                borderRadius: width * 0.03,
+              }}
+            />
+          </View>
+
           <View style={{ marginBottom: height * 0.02 }}>
             <View style={styles.flexContainer}>
               <Text style={[styles.rangeText, { textAlign: "left" }]}>
@@ -239,7 +192,7 @@ const App = () => {
             <Slider
               animateTransitions
               maximumTrackTintColor={"rgba(26, 28, 23, 0.12)"}
-              minimumTrackTintColor={"rgba(2, 48, 71, 1)"}
+              minimumTrackTintColor={"#023047"}
               maximumValue={15}
               minimumValue={1}
               onValueChange={(yearValue) =>
@@ -255,43 +208,55 @@ const App = () => {
           </View>
         </View>
       </ScrollView>
+
+      <View>
+        <Footercorpus />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  portfolioContainer: {
+  container: {
     flex: 1,
-    backgroundColor: "white",
+    justifyContent: "flex-start",
+    // alignItems: "center",
   },
+  arrowContainer: {
+    flexDirection: "row",
+    marginTop: 70,
+    paddingLeft: width * 0.04,
+    position: "absolute",
+  },
+  arrow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  iconArrow: {
+    marginLeft: width * 0.01,
+    color: "#386664",
+  },
+  headerText: {
+    color: "#023047",
+    fontWeight: "600",
+    fontFamily: "Metropolis",
+    fontSize: width * 0.037,
+    lineHeight: height * 0.028,
+    marginLeft: width * 0.047,
+  },
+
   chartContainer: {
-    padding: width * 0.04,
-    marginTop: height * 0.02,
-    backgroundColor: "white",
-    borderWidth: width * 0.002,
-    borderRadius: width * 0.045,
-    borderColor: "rgb(230, 230, 230)",
-    elevation: width * 0.02,
-    marginBottom: height * 0.005,
+    padding: width * 0.08,
+    marginTop: height * 0.12,
+    // backgroundColor: "white",
+    // borderWidth: width * 0.002,
+    // borderRadius: width * 0.045,
+    // borderColor: "rgb(230, 230, 230)",
+    marginBottom: height * 0.01,
   },
-  Trend: {
-    marginTop: height * 0.03,
-    color: "rgba(2, 48, 71, 1)",
-    fontWeight: "600",
-    fontSize: width * 0.045,
-    lineHeight: height * 0.035,
-  },
-  chart: {
-    marginTop: height * 0.03,
-    marginBottom: height * 0.04,
-  },
-  Picker: {
-    color: "rgba(2, 48, 71, 1)",
-    fontWeight: "600",
-    width: width * 0.45,
-  },
+
   buttonTextStyle: {
-    color: "rgba(2, 48, 71, 1)",
+    color: "ntainter",
     fontWeight: "600",
     fontSize: width * 0.04,
     lineHeight: height * 0.03,
@@ -300,20 +265,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     width: width * 0.4,
   },
-  gain: {
-    marginLeft: width * 0.05,
-    color: "rgba(35, 179, 113, 1)",
-    fontWeight: "600",
-    fontSize: width * 0.035,
-    marginTop: -height * 0.015,
-    lineHeight: height * 0.02,
-  },
-  pickerLabelStyle: {
-    fontSize: width * 0.04,
-    borderColor: "red",
-  },
+
   riskCalculatorHeader: {
-    color: "rgba(2, 48, 71, 1)",
+    color: "#023047",
     lineHeight: height * 0.02,
     fontSize: width * 0.035,
     fontWeight: "600",
@@ -322,7 +276,7 @@ const styles = StyleSheet.create({
   },
   amount: {
     marginTop: height * 0.01,
-    color: "rgba(2, 48, 71, 1)",
+    color: "#023047",
     fontWeight: "600",
     fontSize: width * 0.045,
   },
@@ -349,17 +303,35 @@ const styles = StyleSheet.create({
     borderColor: "rgba(0, 0, 0, 0.25)",
     padding: width * 0.02,
   },
+
+  frequencyButtons1: {
+    flex: 1,
+    margin: width * 0.02,
+    alignItems: "center",
+    borderRadius: width * 0.03,
+    borderWidth: 1,
+    borderColor: "rgba(0, 0, 0, 0.25)",
+    padding: width * 0.02,
+  },
   frequencyButtonsText: {
-    color: "rgba(2, 48, 71, 1)",
-    // opacity: 0.6,
-    fontSize: width * 0.035,
-    lineHeight: height * 0.025,
+    color: "#023047",
+    fontSize: width * 0.032,
+    lineHeight: height * 0.04,
     fontWeight: "500",
+    fontFamily: "Metropolis",
+  },
+
+  frequencyButtonsText1: {
+    color: "#023047",
+    fontSize: width * 0.032,
+    lineHeight: height * 0.024,
+    fontWeight: "500",
+    fontFamily: "Metropolis",
   },
   rangeText: {
     flex: 1,
     textAlign: "right",
-    color: "rgba(2, 48, 71, 1)",
+    color: "#023047",
     lineHeight: height * 0.025,
     fontSize: width * 0.035,
     fontWeight: "500",
@@ -374,5 +346,3 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
-
-export default App;

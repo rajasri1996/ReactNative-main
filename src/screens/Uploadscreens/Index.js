@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { TextInput } from "react-native-paper";
 import Uploadoptions from "./Uploadoptions";
 
+
 export default Uploadscreens = () => {
   const [text, setText] = React.useState("");
   return (
