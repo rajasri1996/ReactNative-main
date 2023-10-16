@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     // position: "absolute",
     bottom: 0,
     width: width * 1.04,
-    borderTopLeftRadius: width * 0.13,
+    borderTopLeftRadius: width * 0.14,
     borderTopRightRadius: width * 0.1,
     overflow: "hidden",
     marginLeft: width * -0.03,

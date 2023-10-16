@@ -15,7 +15,8 @@ import Account from "./src/screens/Account/Index";
 import Assetpreview from "./src/screens/Assetpreview/Index";
 import Navigatescreens from "./src/screens/Navigatescreens/Index";
 // import Uploadscreens from "./src/screens/Uploadscreens/Index";
-import Corpusscreens from "./src/screens/Corpusscreens/Index";
+// import Corpusscreens from "./src/screens/Corpusscreens/Index";
+import Goalsscreens from "./src/screens/Goalsscreens/Index";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,7 +24,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Corpusscreens"
+        initialRouteName="Goalsscreens"
         screenOptions={{
           headerShown: false,
         }}
@@ -41,7 +42,8 @@ export default function App() {
         <Stack.Screen name="Assetpreview" component={Assetpreview} />
         <Stack.Screen name="Navigatescreens" component={Navigatescreens} />
         {/* <Stack.Screen name="Uploadscreens" component={Uploadscreens} /> */}
-        <Stack.Screen name="Corpusscreens" component={Corpusscreens} />
+        {/* <Stack.Screen name="Corpusscreens" component={Corpusscreens} /> */}
+        <Stack.Screen name="Goalsscreens" component={Goalsscreens} />
       </Stack.Navigator>
       <StatusBar />
     </NavigationContainer>
